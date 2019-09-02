@@ -233,3 +233,6 @@ fabric.properties
 !.vscode/extensions.json
 
 ### VSCODE GITIGNORE ENDS HERE
+
+# A folder name to ignore where I'll be putting extra zip files and other stuff not needed on github
+toignore
