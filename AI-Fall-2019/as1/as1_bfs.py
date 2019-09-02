@@ -18,7 +18,7 @@ def traverse(tree, init):
 		leaves = [leaf for leaf in tree[node] if leaf not in explored and leaf not in queue]
 		# leaves.sort()										  # alternative
 		# leaves = sorted(leaves, key=lambda leaf: int(leaf)) # ways of sorting
-		leaves.sort(key=int) # sorting alphabetically using Python's built-in in-place sorting algorithm to fulfill alphabetical rule of traversal
+		leaves.sort() # sorting alphabetically using Python's built-in in-place sorting algorithm to fulfill alphabetical rule of traversal
 		# print(leaves)
 
 		for leaf in leaves:
@@ -27,7 +27,6 @@ def traverse(tree, init):
 
 #Points: 3
 def pathfinder(tree, init, goal):
-	traversed = []
 	queue = [[init]]
 	if init == goal:
 		return "No kidding, pls"
@@ -42,7 +41,7 @@ def pathfinder(tree, init, goal):
 			continue
 		explored.add(lastNode)
 		leaves = [leaf for leaf in tree[lastNode] if leaf not in explored]
-		leaves.sort(key=int)
+		leaves.sort() # sorting alphabetically in-place
 		for leaf in leaves:
 			extendedSequence = [newNode for newNode in currentSequence]
 			extendedSequence.append(leaf)
