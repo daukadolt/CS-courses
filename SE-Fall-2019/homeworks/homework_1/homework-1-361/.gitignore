@@ -1,0 +1,12 @@
+/target/
+/.settings/
+.project
+.classpath
+.DS_Store
+/src/main/java/kz/edu/nu/cs/se/hw/solve/
+pg14328.txt
+test.txt
+consolation.html
+kwic-consolation.html
+pg84.txt
+README.pdf
