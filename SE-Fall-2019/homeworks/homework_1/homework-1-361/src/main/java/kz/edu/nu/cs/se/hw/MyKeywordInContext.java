@@ -1,9 +1,56 @@
 package kz.edu.nu.cs.se.hw;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.Buffer;
+import java.util.*;
+
 public class MyKeywordInContext implements KeywordInContext {
+
+    private Set<String> stopWords;
+    private Map<String, SortedSet<Integer>> wordsAndLines;
+    private String name;
 
     public MyKeywordInContext(String name, String pathstring) {
         // TODO Auto-generated constructor stub
+        this.name = name;
+        stopWords = new HashSet<>();
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader("./stopwords.txt"));
+            String line = reader.readLine();
+            while(line != null) {
+                stopWords.add(line);
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("Failed to load stopwords. Reason: " + e.getMessage());
+        }
+        wordsAndLines = new HashMap<>();
+        try {
+            reader = new BufferedReader(new FileReader(pathstring));
+            String line = reader.readLine();
+            String[] splittedLine;
+            int currentLine = 1;
+            while(line != null) {
+                splittedLine = line.split("[\\p{Punct}\\s]+");
+                for(String word : splittedLine) {
+                    if(wordsAndLines.containsKey(word)) {
+                        wordsAndLines.get(word).add(currentLine);
+                    } else {
+                        SortedSet<Integer> newSet = new TreeSet<>();
+                        newSet.add(currentLine);
+                        wordsAndLines.put(word, newSet);
+                    }
+                }
+                currentLine++;
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Failed to load the text file. Reason: " + e.getMessage());
+        }
     }
 
     @Override
