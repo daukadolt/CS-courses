@@ -1,4 +1,4 @@
-package kz.edu.nu.cs.se.hw;
+package kz.edu.nu.cs.se.hw.rummy;
 
 /**
  * An interface for the game logic of a variation of the popular card game

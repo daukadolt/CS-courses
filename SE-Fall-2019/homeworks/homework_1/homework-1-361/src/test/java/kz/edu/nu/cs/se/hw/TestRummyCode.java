@@ -5,6 +5,10 @@ import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 
+import kz.edu.nu.cs.se.hw.rummy.PlayableRummy;
+import kz.edu.nu.cs.se.hw.rummy.Rummy;
+import kz.edu.nu.cs.se.hw.rummy.RummyException;
+import kz.edu.nu.cs.se.hw.rummy.Steps;
 import org.junit.Test;
 
 public class TestRummyCode {

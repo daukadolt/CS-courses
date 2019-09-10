@@ -1,4 +1,4 @@
-package kz.edu.nu.cs.se.hw;
+package kz.edu.nu.cs.se.hw.rummy;
 
 /**
  * Exceptions for <code>PlayableRummy</code>. The constants below list

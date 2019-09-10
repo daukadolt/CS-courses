@@ -2,6 +2,9 @@ package kz.edu.nu.cs.se.hw;
 
 import static org.junit.Assert.assertTrue;
 
+import kz.edu.nu.cs.se.hw.kwic.Indexable;
+import kz.edu.nu.cs.se.hw.kwic.KeywordInContext;
+import kz.edu.nu.cs.se.hw.kwic.MyKeywordInContext;
 import org.junit.Before;
 import org.junit.Test;
 

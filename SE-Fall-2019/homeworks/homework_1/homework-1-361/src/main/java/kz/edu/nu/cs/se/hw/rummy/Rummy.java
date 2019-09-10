@@ -1,4 +1,4 @@
-package kz.edu.nu.cs.se.hw;
+package kz.edu.nu.cs.se.hw.rummy;
 
 /**
  * Starter code for a class that implements the <code>PlayableRummy</code>

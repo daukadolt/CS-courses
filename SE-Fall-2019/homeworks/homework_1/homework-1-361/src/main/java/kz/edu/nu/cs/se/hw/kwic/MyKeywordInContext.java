@@ -1,8 +1,6 @@
-package kz.edu.nu.cs.se.hw;
+package kz.edu.nu.cs.se.hw.kwic;
 
-import javax.sound.midi.SysexMessage;
 import java.io.*;
-import java.nio.Buffer;
 import java.util.*;
 
 public class MyKeywordInContext implements KeywordInContext {
@@ -15,8 +13,7 @@ public class MyKeywordInContext implements KeywordInContext {
 
 
     public static void main(String[] args) {
-        KeywordInContext my = new MyKeywordInContext("name", "pg60271.txt");
-        System.out.println(my.get(my.find("storm")));
+        KeywordInContext my = new MyKeywordInContext("name", "book.txt");
         my.txt2html();
         my.indexLines();
     }

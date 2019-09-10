@@ -1,4 +1,4 @@
-package kz.edu.nu.cs.se.hw;
+package kz.edu.nu.cs.se.hw.kwic;
 
 public class MyIndexable implements Indexable {
 
