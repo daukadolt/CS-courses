@@ -4,13 +4,16 @@
 <meta charset="UTF-8">
 <title>Dynamic Todo List</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
 <script type="text/javascript">
 
 function updateList(items) {
     $("#my-list").html("");
     var currentItem = 0;
+    var listTemplate = _.template("<li><%= entry %> <button value='<%= entryIndex %>' id='list-item'>Delete</button></li>");
     items.forEach(function (e) {
-        $("#my-list").append("<li>" + e + "<button value=\""+currentItem+"\" id='list-item'>Delete</button></li>");
+        // $("#my-list").append("<li>" + e + "<button value=\""+currentItem+"\" id='list-item'>Delete</button></li>");
+        $("#my-list").append(listTemplate({entry: e, entryIndex: currentItem}));
         currentItem++;
     });
 }
@@ -26,12 +29,10 @@ function getListItems() {
 }
 
 function clearList() {
-    console.log("called ClearList");
     $.ajax({
         url: 'services/items',
         type: 'DELETE',
         success: function (r) {
-            console.log("deleted", r);
             getListItems();
         }
     })
@@ -50,7 +51,6 @@ function deleteListItem(id) {
         url: 'services/items/'+id,
         type: 'DELETE',
         success: function (r) {
-            console.log("successfully deleted", id);
             getListItems();
         }
     })
@@ -58,7 +58,7 @@ function deleteListItem(id) {
 
 $(document).ready(function () { 
     getListItems();
-    
+
     $("#send-item").on('click', function () {
         sendListItem();
     });
