@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dynamic Todo List</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+function updateList(items) {
+    $("#my-list").html("");
+    var currentItem = 0;
+    items.forEach(function (e) {
+        $("#my-list").append("<li>" + e + "<button value=\""+currentItem+"\" id='list-item'>Delete</button></li>");
+        currentItem++;
+    });
+}
+
+function getListItems() {
+    $.ajax({
+        url : 'services/items',
+        dataType : 'json',
+        success : function(r) {
+            updateList(r);
+        }
+    });
+}
+
+function clearList() {
+    console.log("called ClearList");
+    $.ajax({
+        url: 'services/items',
+        type: 'DELETE',
+        success: function (r) {
+            console.log("deleted", r);
+            getListItems();
+        }
+    })
+}
+
+function sendListItem() {
+    var listItem = $("#texttosend").val();
+    
+    $.post("services/items", { newEntry: listItem}, function() {
+        getListItems();
+    });
+}
+
+function deleteListItem(id) {
+    $.ajax({
+        url: 'services/items/'+id,
+        type: 'DELETE',
+        success: function (r) {
+            console.log("successfully deleted", id);
+            getListItems();
+        }
+    })
+}
+
+$(document).ready(function () { 
+    getListItems();
+    
+    $("#send-item").on('click', function () {
+        sendListItem();
+    });
+
+    $("#clear-list").on('click', function () {
+        clearList();
+    })
+
+    $("#my-list").on('click', 'li', function (theItem) {
+        deleteListItem(theItem.target.value);
+    })
+});
+
+</script>
+</head>
+<body>
+<h2>Dynamic Todo List Exercise</h2>
+
+<p style="font-style: italic">
+In this exercise, your task is to expand the functionality of this todo list web application.  
+The changes must be implemented both on the front-end and on the server.  
+</p>
+
+<ul style="font-style: italic">
+<li>Add a button that clears the entire list</li>
+<li>Add a convenient way for the user to delete individual entries (for example, individual buttons or links alongside each entry)</li>
+<li>Add a time stamp that shows when a task was created</li>
+<li>Check and validate input using a reasonable regular expression, don't allow tasks with no content</li>
+</ul>
+
+
+Enter your task: <input type="text" id="texttosend"><br>
+<button id="send-item" type="button" >Submit</button>
+<button id="clear-list" type="button">Clear</button>
+
+<ul id="my-list"></ul>
+
+
+<p>
+<a href="services/items">Link to List Items API</a>
+</p>
+
+</body>
+</html>
