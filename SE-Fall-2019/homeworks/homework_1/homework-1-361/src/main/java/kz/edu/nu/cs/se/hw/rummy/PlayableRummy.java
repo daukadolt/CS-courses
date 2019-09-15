@@ -1,5 +1,7 @@
 package kz.edu.nu.cs.se.hw.rummy;
 
+import java.util.List;
+
 /**
  * An interface for the game logic of a variation of the popular card game
  * "rummy". Together with the unit tests <code>TestRummyCode</code>, an
@@ -132,6 +134,8 @@ public interface PlayableRummy {
      * @param card String card to find
      */
     public void rearrange(String card);
+
+    public List<String> getDeck();
 
     /**
      * Shuffle the deck before play begins. The long parameter is a seed value for

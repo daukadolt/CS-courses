@@ -14,7 +14,7 @@ public class MyKeywordInContext implements KeywordInContext {
 
 
     public static void main(String[] args) {
-        KeywordInContext my = new MyKeywordInContext("name", "book.txt");
+        KeywordInContext my = new MyKeywordInContext("name", "frankensteinsample.txt");
         my.txt2html();
         my.indexLines();
         my.writeIndexToFile();
@@ -139,6 +139,42 @@ public class MyKeywordInContext implements KeywordInContext {
         }
     }
 
+    private void writeLine(BufferedWriter bw, String[] line, ArrayList<Integer> ignoredIndices, Indexable currentIndex) {
+        System.out.println("writeline for " + currentIndex.getEntry());
+        int startSearchingAt = ignoredIndices.size() != 0 ? ignoredIndices.get(ignoredIndices.size()-1) : -1;
+        boolean foundNewWord = false;
+        int stoppedAt = line.length;
+        try {
+            for(int i = 0; i<=startSearchingAt; i++) {
+                bw.write(line[i]);
+                bw.write(" ");
+            }
+            for(int i = startSearchingAt+1; i<line.length; i++) {
+                String word = line[i];
+                String lowerWord = word.toLowerCase();
+                if(lowerWord.equals(currentIndex.getEntry())) {
+                    bw.write("<a href=\""+this.name+".html#line_"+currentIndex.getLineNumber()+"\">"+lowerWord.toUpperCase()+"</a>");
+                    bw.write(" ");
+                    ignoredIndices.add(i);
+                    foundNewWord = true;
+                    stoppedAt = i+1;
+                    break;
+                }
+            }
+            for(int i = stoppedAt; i<line.length; i++) {
+                bw.write(line[i]);
+                bw.write(" ");
+            }
+            bw.write("<br>\n");
+            if(foundNewWord) {
+                System.out.println("Found new occurence");
+                writeLine(bw, line, ignoredIndices, currentIndex);
+            }
+        } catch (IOException e) {
+
+        }
+    }
+
     @Override
     public void writeIndexToFile() {
         // TODO Auto-generated method stub
@@ -152,17 +188,8 @@ public class MyKeywordInContext implements KeywordInContext {
                 for(int index: entry.getValue()) {
                     Indexable currentIndex = indexes.get(index);
                     String[] splittedLine = txtLines.get(currentIndex.getLineNumber()-1).split("[\\p{Punct}\\s]+");
-                    for(String word: splittedLine) {
-                        String lowerWord = word.toLowerCase();
-                        if(lowerWord.equals(entry.getKey())) {
-                            bw.write("<a href=\""+this.name+".html#line_"+currentIndex.getLineNumber()+"\">"+lowerWord.toUpperCase()+"</a>");
-                            bw.write(" ");
-                        } else {
-                            bw.write(word);
-                            bw.write(" ");
-                        }
-                    }
-                    bw.write("<br>\n");
+                    ArrayList<Integer> ignoredIndices = new ArrayList<>();
+                    writeLine(bw, splittedLine, ignoredIndices, currentIndex);
                 }
             }
             bw.write("</div>\n");
