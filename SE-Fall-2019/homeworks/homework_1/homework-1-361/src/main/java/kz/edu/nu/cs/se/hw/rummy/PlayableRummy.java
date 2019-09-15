@@ -1,5 +1,7 @@
 package kz.edu.nu.cs.se.hw.rummy;
 
+import kz.edu.nu.cs.se.hw.rummy.states.Steps;
+
 import java.util.List;
 
 /**
@@ -134,8 +136,6 @@ public interface PlayableRummy {
      * @param card String card to find
      */
     public void rearrange(String card);
-
-    public List<String> getDeck();
 
     /**
      * Shuffle the deck before play begins. The long parameter is a seed value for

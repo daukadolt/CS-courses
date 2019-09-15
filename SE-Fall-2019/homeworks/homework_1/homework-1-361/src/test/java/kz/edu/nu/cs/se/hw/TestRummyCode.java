@@ -8,7 +8,7 @@ import java.util.Arrays;
 import kz.edu.nu.cs.se.hw.rummy.PlayableRummy;
 import kz.edu.nu.cs.se.hw.rummy.Rummy;
 import kz.edu.nu.cs.se.hw.rummy.RummyException;
-import kz.edu.nu.cs.se.hw.rummy.Steps;
+import kz.edu.nu.cs.se.hw.rummy.states.Steps;
 import org.junit.Test;
 
 public class TestRummyCode {
@@ -28,11 +28,9 @@ public class TestRummyCode {
 //        System.out.println("Before shuffle deck " + rummy.getDeck());
         for (String suit : suits) {
             for (String rank : ranks) {
-                System.out.println(rank+suit);
                 rummy.rearrange(rank + suit);
             }
         }
-        System.out.println("After shuffle deck " + rummy.getDeck());
     }
 
     /*
@@ -559,7 +557,6 @@ public class TestRummyCode {
             assertTrue(e.kind == RummyException.RUMMY_NOT_DEMONSTRATED);
         }
         rummy.discard("4S");
-        
         // turn 2
         rummy.drawFromDeck();
         rummy.declareRummy();
