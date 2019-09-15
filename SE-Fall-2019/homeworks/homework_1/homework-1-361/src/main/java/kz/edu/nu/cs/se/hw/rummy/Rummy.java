@@ -92,6 +92,7 @@ public class Rummy implements PlayableRummy {
     @Override
     public int getNumCardsInDiscardPile() {
         // TODO Auto-generated method stub
+        System.out.println("discard size "+discardPile.size());
         return discardPile.size();
     }
 
@@ -115,6 +116,7 @@ public class Rummy implements PlayableRummy {
     @Override
     public int getNumMelds() {
         // TODO Auto-generated method stub
+        System.out.println("Melds size: " + this.melds.size());
         return melds.size();
     }
 
@@ -162,6 +164,7 @@ public class Rummy implements PlayableRummy {
     @Override
     public int isFinished() {
         // TODO Auto-generated method stub
+        System.out.println("Finished: " + this.state + "Winner " + this.winner);
         return this.state == Steps.FINISHED ? this.winner : -1;
     }
 
@@ -231,8 +234,16 @@ public class Rummy implements PlayableRummy {
     @Override
     public void meld(String... cards) {
         // TODO Auto-generated method stub
+        System.out.println("Melding with player " + players.get(currentPlayer));
+        System.out.println("Melds: " + this.melds);
         if(this.state == Steps.MELD || this.state == Steps.RUMMY) {
             if(cards.length < 3) throw new RummyException("", RummyException.NOT_VALID_MELD);
+            String player = players.get(currentPlayer);
+            for(String card: cards) {
+                if(!playerHands.get(player).contains(card)) {
+                    throw new RummyException("", RummyException.EXPECTED_CARDS);
+                }
+            }
             ArrayList<String> respectiveRanks = new ArrayList<>();
             ArrayList<String> respectiveSuits = new ArrayList<>();
             for(String card: cards) {
@@ -251,18 +262,20 @@ public class Rummy implements PlayableRummy {
             }
             if(equalRanks) {
                 if(cards.length != 4 && cards.length != 5) throw new RummyException("", RummyException.NOT_VALID_MELD);
-                String player = players.get(currentPlayer);
                 for(String card: cards) {
                     playerHands.get(player).remove(card);
                 }
                 if(playerHands.get(player).size() == 0) {
                     this.state = Steps.FINISHED;
                 }
+                Set<String> lastMeld = new HashSet<>(Arrays.asList(cards));
+                this.melds.add(lastMeld);
                 return;
             }
             // Not equal ranks, then check for identity of suits
             for(String suit: respectiveSuits) {
                 if(!suit.equals(respectiveRanks.get(0))) {
+                    System.out.println("This thrown?");
                     throw new RummyException("", RummyException.NOT_VALID_MELD);
                 }
             }
@@ -284,10 +297,12 @@ public class Rummy implements PlayableRummy {
                     throw new RummyException("", RummyException.NOT_VALID_MELD);
                 }
             }
-            String player = players.get(currentPlayer);
             for(String card: cards) {
                 playerHands.get(player).remove(card);
             }
+            Set<String> lastMeld = new HashSet<>(Arrays.asList(cards));
+            this.melds.add(lastMeld);
+            return;
         } else {
             throw new RummyException("", RummyException.EXPECTED_MELD_STEP_OR_RUMMY_STEP);
         }
@@ -304,15 +319,16 @@ public class Rummy implements PlayableRummy {
     public void declareRummy() {
         // TODO Auto-generated method stub
         if(this.state != Steps.MELD) throw new RummyException("", RummyException.EXPECTED_MELD_STEP);
-        String player = players.get(currentPlayer);
-        meld(playerHands.get(player).toArray(new String[0]));
-        
+        this.state = Steps.RUMMY;
     }
 
     @Override
     public void finishMeld() {
         // TODO Auto-generated method stub
+        String player = players.get(currentPlayer);
+        if(this.state == Steps.RUMMY && playerHands.get(player).size() != 0) throw new RummyException("", RummyException.RUMMY_NOT_DEMONSTRATED);
         System.out.println("finishMeld");
+        System.out.println("Melds: " + this.melds);
         if(this.state == Steps.MELD || this.state == Steps.RUMMY) {
             System.out.println("Stuff");
             this.state = Steps.DISCARD;
@@ -326,12 +342,20 @@ public class Rummy implements PlayableRummy {
     @Override
     public void discard(String card) {
         // TODO Auto-generated method stub
-        if(this.state != Steps.DISCARD) throw new RummyException("", RummyException.EXPECTED_DISCARD_STEP);
+        if(!(this.state == Steps.DISCARD || this.state == Steps.RUMMY)) throw new RummyException("", RummyException.EXPECTED_DISCARD_STEP);
         String player = players.get(currentPlayer);
+        System.out.println("Player " + player + " hand is : " + playerHands.get(player));
         if(playerHands.get(player).contains(card) && lastDrawnDiscardedCard.contains(card)) {
             throw new RummyException("", RummyException.NOT_VALID_DISCARD);
         }
         if(!playerHands.get(player).contains(card)) throw new RummyException("", RummyException.EXPECTED_CARDS);
+        if(playerHands.get(player).size() == 1) {
+            playerHands.get(player).remove(card);
+            discardPile.add(card);
+            winner = currentPlayer;
+            this.state = Steps.FINISHED;
+            return;
+        }
         System.out.println("Current player is " + (currentPlayer+1));
         System.out.println("Deck size = " + this.deck.size());
         System.out.println("Discard size = " + this.discardPile.size());
