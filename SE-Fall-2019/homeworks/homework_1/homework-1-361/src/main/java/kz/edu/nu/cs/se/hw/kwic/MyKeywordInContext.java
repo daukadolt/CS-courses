@@ -14,7 +14,7 @@ public class MyKeywordInContext implements KeywordInContext {
 
 
     public static void main(String[] args) {
-        KeywordInContext my = new MyKeywordInContext("name", "frankensteinsample.txt");
+        KeywordInContext my = new MyKeywordInContext("test-book", "test-book.txt");
         my.txt2html();
         my.indexLines();
         my.writeIndexToFile();
@@ -189,7 +189,18 @@ public class MyKeywordInContext implements KeywordInContext {
                     Indexable currentIndex = indexes.get(index);
                     String[] splittedLine = txtLines.get(currentIndex.getLineNumber()-1).split("[\\p{Punct}\\s]+");
                     ArrayList<Integer> ignoredIndices = new ArrayList<>();
-                    writeLine(bw, splittedLine, ignoredIndices, currentIndex);
+                    for(int i = 0; i<splittedLine.length; i++) {
+                        String word = splittedLine[i];
+                        String loweredWord = word.toLowerCase();
+                        if(loweredWord.equals(entry.getKey())) {
+                            bw.write("<a href=\""+this.name+".html#line_"+currentIndex.getLineNumber()+"\">"+currentIndex.getEntry().toUpperCase()+"</a>");
+                            bw.write(" ");
+                        } else {
+                            bw.write(word);
+                            bw.write(" ");
+                        }
+                    }
+                    bw.write("<br>\n");
                 }
             }
             bw.write("</div>\n");
