@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>pagingexercise361</title>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/lodash.min.js"></script>
+
+<script type="text/javascript">
+var app = {
+        items : [],
+        nextpage : 0,
+        prevpage : 0
+};
+
+function updateList() {
+    $("#my-list").html("");
+    app.items.forEach(function (e) {
+        $("#my-list").append("<li>" + e + "</li>");
+    });
+    if(app.prevpage === "null") {
+        $("#prev-button").attr("disabled", true);
+    } else {
+        $("#prev-button").attr("disabled", false);
+    }
+    if(app.nextpage === "null") {
+        $("#next-button").attr("disabled", true);
+    } else {
+        $("#next-button").attr("disabled", false);
+    }
+}
+
+function getListItems() {
+    $.ajax({
+        url : 'services/items',
+        dataType : 'json',
+        success : function(r) {
+            app.items = r.list;
+            app.nextpage = r.next;
+            app.prevpage = r.prev;
+            updateList();
+        }
+    });
+}
+
+function navigateLeft() {
+    console.log("navigateLeft");
+    $.ajax({
+        url: 'services/items/?page='+app.prevpage,
+        dataType: 'json',
+        success: function (r) {
+            app.items = r.list;
+            app.nextpage = r.next;
+            app.prevpage = r.prev;
+            updateList();
+        }
+    })
+}
+
+function navigateRight() {
+    console.log("navigateRight");
+    $.ajax({
+        url: 'services/items/?page='+app.nextpage,
+        dataType: 'json',
+        success: function (r) {
+            app.items = r.list;
+            app.nextpage = r.next;
+            app.prevpage = r.prev;
+            updateList();
+        }
+    })
+}
+
+function sendListItem() {
+    var s = $("#texttosend").val();
+    
+    $.post("todo", { texttosend: s}, function() {
+        getListItems();
+    });
+}
+
+$(document).ready(function () { 
+    getListItems();
+    
+    $("#send-item").on('click', function () {
+        sendListItem();
+    });
+});
+</script>
+</head>
+<body>
+<h2>Paging Application</h2>
+
+
+<ul id="my-list"></ul>
+
+
+<br>
+<button id="prev-button" onclick="navigateLeft()">Previous</button>
+<button id="next-button" onclick="navigateRight()">Next</button>
+</body>
+</html>
