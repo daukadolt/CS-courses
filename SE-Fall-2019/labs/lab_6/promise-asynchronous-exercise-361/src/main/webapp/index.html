@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Javascript Promises Exercise</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" 
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+function showSuccess() {console.log("Success!");}
+
+function show(value) {
+    $("#requestMessage").html("The number of steps is " + value.steps + ", and the expected number is " + value.expected);
+}
+
+function mySequence() {
+    $.get("myservlet",{},function (r) {
+        show(r);
+        $.get("myservlet?chain=" + r.expected, {}, function (r) {
+            show(r);
+            $.get("myservlet?chain=" + r.expected, {}, function (r) {
+                show(r);
+                $.get("myservlet?chain=" + r.expected, {}, function (r) {
+                    show(r);
+                    $.get("myservlet?chain=" + r.expected, {}, function (r) {
+                        console.log("Number of steps advanced is " + r.steps);
+                        show(r);
+                    }, "json");
+                }, "json");
+            }, "json");
+        }, "json");
+    }, "json");
+}
+
+function mySequenceWithPromises() {
+    var newPromise = new Promise( function(resolve, reject) {
+        $.ajax({
+            url: 'myservlet',
+            datatype: 'json',
+            success: function(r) {
+                show(r);
+                resolve(r);
+            }
+        });
+    } );
+
+    newPromise.then( function(result) {
+        return new Promise( function (resolve, reject) {
+            $.ajax({
+                url: 'myservlet?chain=' + result.expected,
+                datatype: 'json',
+                success: function(r) {
+                    show(r);
+                    resolve(r);
+                }
+            });
+        } )
+    } ).then( function(result) {
+        return new Promise( function (resolve, reject) {
+            $.ajax({
+                url: 'myservlet?chain=' + result.expected,
+                datatype: 'json',
+                success: function(r) {
+                    show(r);
+                    resolve(r);
+                }
+            });
+        } )
+    } ).then( function(result) {
+        return new Promise( function (resolve, reject) {
+            $.ajax({
+                url: 'myservlet?chain=' + result.expected,
+                datatype: 'json',
+                success: function(r) {
+                    show(r);
+                    resolve(r);
+                }
+            });
+        } )
+    } ).then( function(result) {
+        $.ajax({
+            url: 'myservlet?chain=' + result.expected,
+            datatype: 'json',
+            success: function(r) {
+                show(r);
+                console.log("Number of steps advanced is " + r.steps);
+            }
+        });
+    } )
+}
+
+$(document).ready(function () {
+    console.log("Page Loaded");
+    
+    $("#seqN").on("click", function () {
+        mySequence();
+    });
+    
+    $("#seqP").on("click", function () {
+        mySequenceWithPromises();
+    });
+    
+    $("#seqReset").on("click", function () {
+        $.get("myservlet?reset=1", showSuccess);
+        $("#requestMessage").html("");
+    });
+});
+</script>
+</head>
+<body>
+<h2>Javascript Promises Exercise</h2>
+<p>
+This exercise aims to illustrate how <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promises</a> work in Javascript.  Promises are an alternative to callbacks when making asynchronous requests.  
+</p>
+<p>The application consists of this HTML page and a <a href="myservlet">service</a> implemented as a Java HTTP Servlet.  
+The idea of this application is that requests are made in a sequence.  You utilize the information returned from one 
+request to make the next.  In this case the service is expecting to receive a randomly generated number that you
+pass as a query parameter.  
+</p>
+<p>Your task is to complete the implementation of the function 
+<span style="font-family: monospace">mySequenceWithPromises</span> so that it makes the same sequence of requests
+to the endpoint as the function <span style="font-family: monospace">mySequence</span>.
+</p>
+<p>Note that it is helpful to keep the Javascript console open while doing this kind of development.
+Please refer to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">this page</a> from the Mozilla
+web docs for information about working with promises.  Also refer to the <a href="https://api.jquery.com/jquery.ajax/">jQuery</a> documentation 
+which explains that the jQuery Ajax functions return Promise objects.  
+</p>
+<hr>
+<div id="requestMessage"></div><br>
+<button id="seqN">Chained Requests with Nested Functions</button><br>
+<button id="seqP">Chained Requests with Promises</button><br>
+<button id="seqReset">Reset</button>
+</body>
+</html>
