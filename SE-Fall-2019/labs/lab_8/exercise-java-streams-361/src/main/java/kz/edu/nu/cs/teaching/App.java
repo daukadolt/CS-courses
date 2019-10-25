@@ -48,9 +48,11 @@ public class App {
      */
     public static void groupWordsByFirstCharacter(Stream<String> stream) {
         // complete method
-         Map result = stream.flatMap(line -> Stream.of(line.split(" ")))
-                .collect(Collectors.groupingBy(word -> word.charAt(0)));
-         System.out.println(result);
+         stream
+            .map(line -> line.replaceAll("[^a-zA-Z ]", ""))
+            .flatMap(line -> Stream.of(line.split(" ")))
+            .collect(Collectors.groupingBy(word -> word.toLowerCase().charAt(0)))
+            .forEach((key, value) -> System.out.println(key + ", " + value.size()));
     }
     
     /*
