@@ -20,15 +20,15 @@ def Weight_update(feature, label, weight_i2o):
  #"*** YOUR CODE HERE ***" 
   
   
-	predicted_vector = np.dot(weight_i2o.T, feature) 
-	feature = feature.reshape(len(feature), 1) 
-	predicted_vector = np.asarray([0 if i != np.argmax(predicted_vector) else 1 for i in range(out_dim)]) 
-	predicted_vector = predicted_vector.reshape(1, len(predicted_vector)) 
-	actual_vector = np.asarray([0 if i != int(label) else 1 for i in range(out_dim)]) 
-	actual_vector = actual_vector.reshape(1, len(actual_vector)) 
+	predicted_vector = np.dot(weight_i2o.T, feature) # <--- obtaining output layer values
+	feature = feature.reshape(len(feature), 1)  # <--- feature vector is of shape (785, ) which cannot be used in dot products. Reshaping it into (785, 1)
+	predicted_vector = np.asarray([0 if i != np.argmax(predicted_vector) else 1 for i in range(out_dim)])  # <--- changing predicted_vector by leaving max node as 1 and rest as 0
+	predicted_vector = predicted_vector.reshape(1, len(predicted_vector))  # <--- reshaping into (1, 10) so that dot product at weight_i2o update would work at line 30
+	actual_vector = np.asarray([0 if i != int(label) else 1 for i in range(out_dim)])  # <--- since we are only given label as a number of form 5.0 for example, we need to set 5th index of vector of length 10 as 1 and the rest as 0s as per PDF instructions on Moodle
+	actual_vector = actual_vector.reshape(1, len(actual_vector))  # <--- reshaping actual_vector just like predicted_vector
 
-	weight_i2o += eta*np.dot(feature, (actual_vector - predicted_vector)) 
-	# print("predicted:", predicted_label, " , actual:", label) 
+	weight_i2o += eta*np.dot(feature, (actual_vector - predicted_vector))  # <--- updating weight_i2o
+	
 	return weight_i2o 
      
      
@@ -42,14 +42,8 @@ def get_predictions(dataset, weight_i2o):
   # Return: list (or ndarray) of predicted labels from given dataset 
  #""" 
  #"*** YOUR CODE HERE ***" 
- # predicted_labels = [] 
- # for image in dataset: 
- #  for i, weight in enumerate(weight_i2o): 
- #   currentOutputVector = np.asarray([image[i]*weight[node_num] for node_num in range(len(weight_i2o[0]))]) 
- #  predicted_labels.append(np.argmax(currentOutputVector)+1) 
- # return np.asarray(predicted_labels) 
-	product = dataset.dot(weight_i2o) 
-	return np.argmax(product, axis=1) 
+	product = dataset.dot(weight_i2o)  # <--- obtaining output layers for all inputs
+	return np.argmax(product, axis=1)  # <--- reducing each output layer into single number which is an index of the max node
   
      
   
