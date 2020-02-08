@@ -1,0 +1,111 @@
+No.     Time               Source                Destination           Protocol Length Info
+     17 20:25:30.398874    10.101.6.200          128.119.245.12        HTTP     572    GET /wireshark-labs/protected_pages/HTTP-wireshark-%20file5.html HTTP/1.1 
+
+Frame 17: 572 bytes on wire (4576 bits), 572 bytes captured (4576 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 128.119.245.12
+Transmission Control Protocol, Src Port: 58940, Dst Port: 80, Seq: 1, Ack: 1, Len: 506
+Hypertext Transfer Protocol
+    GET /wireshark-labs/protected_pages/HTTP-wireshark-%20file5.html HTTP/1.1\r\n
+    Host: gaia.cs.umass.edu\r\n
+    Connection: keep-alive\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Accept-Language: en-US,en;q=0.9,ru;q=0.8\r\n
+    dnt: 1\r\n
+    \r\n
+    [Full request URI: http://gaia.cs.umass.edu/wireshark-labs/protected_pages/HTTP-wireshark-%20file5.html]
+    [HTTP request 1/1]
+    [Response in frame: 19]
+
+No.     Time               Source                Destination           Protocol Length Info
+     19 20:25:30.581969    128.119.245.12        10.101.6.200          HTTP     783    HTTP/1.1 401 Unauthorized  (text/html)
+
+Frame 19: 783 bytes on wire (6264 bits), 783 bytes captured (6264 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58940, Seq: 1, Ack: 507, Len: 717
+Hypertext Transfer Protocol
+    HTTP/1.1 401 Unauthorized\r\n
+    Date: Sat, 08 Feb 2020 14:25:30 GMT\r\n
+    Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/5.4.16 mod_perl/2.0.11 Perl/v5.16.3\r\n
+    WWW-Authenticate: Basic realm="wireshark-students only"\r\n
+    Content-Length: 381\r\n
+    Keep-Alive: timeout=5, max=100\r\n
+    Connection: Keep-Alive\r\n
+    Content-Type: text/html; charset=iso-8859-1\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.183095000 seconds]
+    [Request in frame: 17]
+    [Request URI: http://gaia.cs.umass.edu/wireshark-labs/protected_pages/HTTP-wireshark-%20file5.html]
+    File Data: 381 bytes
+Line-based text data: text/html (12 lines)
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">\n
+    <html><head>\n
+    <title>401 Unauthorized</title>\n
+    </head><body>\n
+    <h1>Unauthorized</h1>\n
+    <p>This server could not verify that you\n
+    are authorized to access the document\n
+    requested.  Either you supplied the wrong\n
+    credentials (e.g., bad password), or your\n
+    browser doesn't understand how to supply\n
+    the credentials required.</p>\n
+    </body></html>\n
+
+No.     Time               Source                Destination           Protocol Length Info
+     76 20:25:36.155426    10.101.6.200          128.119.245.12        HTTP     657    GET /wireshark-labs/protected_pages/HTTP-wireshark-%20file5.html HTTP/1.1 
+
+Frame 76: 657 bytes on wire (5256 bits), 657 bytes captured (5256 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 128.119.245.12
+Transmission Control Protocol, Src Port: 58941, Dst Port: 80, Seq: 1, Ack: 1, Len: 591
+Hypertext Transfer Protocol
+    GET /wireshark-labs/protected_pages/HTTP-wireshark-%20file5.html HTTP/1.1\r\n
+    Host: gaia.cs.umass.edu\r\n
+    Connection: keep-alive\r\n
+    Cache-Control: max-age=0\r\n
+    Authorization: Basic d2lyZXNoYXJrLXN0dWRlbnRzOm5ldHdvcms=\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Accept-Language: en-US,en;q=0.9,ru;q=0.8\r\n
+    dnt: 1\r\n
+    \r\n
+    [Full request URI: http://gaia.cs.umass.edu/wireshark-labs/protected_pages/HTTP-wireshark-%20file5.html]
+    [HTTP request 1/1]
+    [Response in frame: 79]
+
+No.     Time               Source                Destination           Protocol Length Info
+     79 20:25:36.325282    128.119.245.12        10.101.6.200          HTTP     597    HTTP/1.1 404 Not Found  (text/html)
+
+Frame 79: 597 bytes on wire (4776 bits), 597 bytes captured (4776 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58941, Seq: 1, Ack: 592, Len: 531
+Hypertext Transfer Protocol
+    HTTP/1.1 404 Not Found\r\n
+    Date: Sat, 08 Feb 2020 14:25:36 GMT\r\n
+    Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/5.4.16 mod_perl/2.0.11 Perl/v5.16.3\r\n
+    Content-Length: 255\r\n
+    Keep-Alive: timeout=5, max=100\r\n
+    Connection: Keep-Alive\r\n
+    Content-Type: text/html; charset=iso-8859-1\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.169856000 seconds]
+    [Request in frame: 76]
+    [Request URI: http://gaia.cs.umass.edu/wireshark-labs/protected_pages/HTTP-wireshark-%20file5.html]
+    File Data: 255 bytes
+Line-based text data: text/html (7 lines)
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">\n
+    <html><head>\n
+    <title>404 Not Found</title>\n
+    </head><body>\n
+    <h1>Not Found</h1>\n
+    <p>The requested URL /wireshark-labs/protected_pages/HTTP-wireshark- file5.html was not found on this server.</p>\n
+    </body></html>\n

@@ -1,0 +1,230 @@
+No.     Time               Source                Destination           Protocol Length Info
+    239 18:57:23.073353    10.101.6.200          128.119.245.12        HTTP     553    GET /wireshark-labs/HTTP-wireshark-file2.html HTTP/1.1 
+
+Frame 239: 553 bytes on wire (4424 bits), 553 bytes captured (4424 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 128.119.245.12
+Transmission Control Protocol, Src Port: 58400, Dst Port: 80, Seq: 1, Ack: 1, Len: 487
+Hypertext Transfer Protocol
+    GET /wireshark-labs/HTTP-wireshark-file2.html HTTP/1.1\r\n
+    Host: gaia.cs.umass.edu\r\n
+    Connection: keep-alive\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Accept-Language: en-US,en;q=0.9,ru;q=0.8\r\n
+    dnt: 1\r\n
+    \r\n
+    [Full request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html]
+    [HTTP request 1/2]
+    [Response in frame: 267]
+    [Next request in frame: 273]
+
+No.     Time               Source                Destination           Protocol Length Info
+    267 18:57:23.242588    128.119.245.12        10.101.6.200          HTTP     796    HTTP/1.1 200 OK  (text/html)
+
+Frame 267: 796 bytes on wire (6368 bits), 796 bytes captured (6368 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58400, Seq: 1, Ack: 488, Len: 730
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+    Date: Sat, 08 Feb 2020 12:57:23 GMT\r\n
+    Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/5.4.16 mod_perl/2.0.11 Perl/v5.16.3\r\n
+    Last-Modified: Sat, 08 Feb 2020 06:59:02 GMT\r\n
+    ETag: "173-59e0b0a93bc99"\r\n
+    Accept-Ranges: bytes\r\n
+    Content-Length: 371\r\n
+    Keep-Alive: timeout=5, max=100\r\n
+    Connection: Keep-Alive\r\n
+    Content-Type: text/html; charset=UTF-8\r\n
+    \r\n
+    [HTTP response 1/2]
+    [Time since request: 0.169235000 seconds]
+    [Request in frame: 239]
+    [Next request in frame: 273]
+    [Next response in frame: 276]
+    [Request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html]
+    File Data: 371 bytes
+Line-based text data: text/html (10 lines)
+    \n
+    <html>\n
+    \n
+    Congratulations again!  Now you've downloaded the file lab2-2.html. <br>\n
+    This file's last modification date will not change.  <p>\n
+    Thus  if you download this multiple times on your browser, a complete copy <br>\n
+    will only be sent once by the server due to the inclusion of the IN-MODIFIED-SINCE<br>\n
+    field in your browser's HTTP GET request to the server.\n
+    \n
+    </html>\n
+
+No.     Time               Source                Destination           Protocol Length Info
+    273 18:57:23.540041    10.101.6.200          128.119.245.12        HTTP     485    GET /favicon.ico HTTP/1.1 
+
+Frame 273: 485 bytes on wire (3880 bits), 485 bytes captured (3880 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 128.119.245.12
+Transmission Control Protocol, Src Port: 58400, Dst Port: 80, Seq: 488, Ack: 731, Len: 419
+Hypertext Transfer Protocol
+    GET /favicon.ico HTTP/1.1\r\n
+    Host: gaia.cs.umass.edu\r\n
+    Connection: keep-alive\r\n
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36\r\n
+    Accept: image/webp,image/apng,image/*,*/*;q=0.8\r\n
+    Referer: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Accept-Language: en-US,en;q=0.9,ru;q=0.8\r\n
+    dnt: 1\r\n
+    \r\n
+    [Full request URI: http://gaia.cs.umass.edu/favicon.ico]
+    [HTTP request 2/2]
+    [Prev request in frame: 239]
+    [Response in frame: 276]
+
+No.     Time               Source                Destination           Protocol Length Info
+    276 18:57:23.716200    128.119.245.12        10.101.6.200          HTTP     550    HTTP/1.1 404 Not Found  (text/html)
+
+Frame 276: 550 bytes on wire (4400 bits), 550 bytes captured (4400 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58400, Seq: 731, Ack: 907, Len: 484
+Hypertext Transfer Protocol
+    HTTP/1.1 404 Not Found\r\n
+    Date: Sat, 08 Feb 2020 12:57:23 GMT\r\n
+    Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/5.4.16 mod_perl/2.0.11 Perl/v5.16.3\r\n
+    Content-Length: 209\r\n
+    Keep-Alive: timeout=5, max=99\r\n
+    Connection: Keep-Alive\r\n
+    Content-Type: text/html; charset=iso-8859-1\r\n
+    \r\n
+    [HTTP response 2/2]
+    [Time since request: 0.176159000 seconds]
+    [Prev request in frame: 239]
+    [Prev response in frame: 267]
+    [Request in frame: 273]
+    [Request URI: http://gaia.cs.umass.edu/favicon.ico]
+    File Data: 209 bytes
+Line-based text data: text/html (7 lines)
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">\n
+    <html><head>\n
+    <title>404 Not Found</title>\n
+    </head><body>\n
+    <h1>Not Found</h1>\n
+    <p>The requested URL /favicon.ico was not found on this server.</p>\n
+    </body></html>\n
+
+No.     Time               Source                Destination           Protocol Length Info
+    664 18:57:28.114807    10.101.6.200          64.233.162.100        HTTP     482    GET /edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvMjk4QUFXWHV4aEtlX19peUJMaUFXd3dUZw/8019.1111.0.0_pkedcjkdefgpdelpbcmbmeomcjbeemfm.crx HTTP/1.1 
+
+Frame 664: 482 bytes on wire (3856 bits), 482 bytes captured (3856 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 64.233.162.100
+Transmission Control Protocol, Src Port: 58407, Dst Port: 80, Seq: 1, Ack: 1, Len: 416
+Hypertext Transfer Protocol
+    GET /edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvMjk4QUFXWHV4aEtlX19peUJMaUFXd3dUZw/8019.1111.0.0_pkedcjkdefgpdelpbcmbmeomcjbeemfm.crx HTTP/1.1\r\n
+    Host: redirector.gvt1.com\r\n
+    Connection: keep-alive\r\n
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Accept-Language: en-US,en;q=0.9,ru;q=0.8\r\n
+    \r\n
+    [Full request URI: http://redirector.gvt1.com/edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvMjk4QUFXWHV4aEtlX19peUJMaUFXd3dUZw/8019.1111.0.0_pkedcjkdefgpdelpbcmbmeomcjbeemfm.crx]
+    [HTTP request 1/1]
+    [Response in frame: 668]
+
+No.     Time               Source                Destination           Protocol Length Info
+    668 18:57:28.178006    64.233.162.100        10.101.6.200          HTTP     1178   HTTP/1.1 302 Found  (text/html)
+
+Frame 668: 1178 bytes on wire (9424 bits), 1178 bytes captured (9424 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 64.233.162.100, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58407, Seq: 1, Ack: 417, Len: 1112
+Hypertext Transfer Protocol
+    HTTP/1.1 302 Found\r\n
+    Date: Sat, 08 Feb 2020 12:57:28 GMT\r\n
+    Pragma: no-cache\r\n
+    Expires: Fri, 01 Jan 1990 00:00:00 GMT\r\n
+    Cache-Control: no-cache, must-revalidate\r\n
+     [truncated]Location: http://r2---sn-ug5on-unxe.gvt1.com/edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvMjk4QUFXWHV4aEtlX19peUJMaUFXd3dUZw/8019.1111.0.0_pkedcjkdefgpdelpbcmbmeomcjbeemfm.crx?cms_redirect=yes&mip=87.255.216.85&mm=28&
+    Content-Type: text/html; charset=UTF-8\r\n
+    Server: ClientMapServer\r\n
+    Content-Length: 519\r\n
+    X-XSS-Protection: 0\r\n
+    X-Frame-Options: SAMEORIGIN\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.063199000 seconds]
+    [Request in frame: 664]
+    [Request URI: http://redirector.gvt1.com/edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvMjk4QUFXWHV4aEtlX19peUJMaUFXd3dUZw/8019.1111.0.0_pkedcjkdefgpdelpbcmbmeomcjbeemfm.crx]
+    File Data: 519 bytes
+Line-based text data: text/html (6 lines)
+    <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">\n
+    <TITLE>302 Moved</TITLE></HEAD><BODY>\n
+    <H1>302 Moved</H1>\n
+    The document has moved\n
+     [truncated]<A HREF="http://r2---sn-ug5on-unxe.gvt1.com/edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvMjk4QUFXWHV4aEtlX19peUJMaUFXd3dUZw/8019.1111.0.0_pkedcjkdefgpdelpbcmbmeomcjbeemfm.crx?cms_redirect=yes&amp;mip=87.255.216.85&amp
+    </BODY></HTML>\r\n
+
+No.     Time               Source                Destination           Protocol Length Info
+    677 18:57:28.438752    10.101.6.200          91.185.2.205          HTTP     602    GET /edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvMjk4QUFXWHV4aEtlX19peUJMaUFXd3dUZw/8019.1111.0.0_pkedcjkdefgpdelpbcmbmeomcjbeemfm.crx?cms_redirect=yes&mip=87.255.216.85&mm=28&mn=sn-ug5on-unxe&ms=nvh&mt=1581166574&mv=m&mvi=1&pl=24&shardbypass=yes HTTP/1.1 
+
+Frame 677: 602 bytes on wire (4816 bits), 602 bytes captured (4816 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 91.185.2.205
+Transmission Control Protocol, Src Port: 58409, Dst Port: 80, Seq: 1, Ack: 1, Len: 536
+Hypertext Transfer Protocol
+     [truncated]GET /edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvMjk4QUFXWHV4aEtlX19peUJMaUFXd3dUZw/8019.1111.0.0_pkedcjkdefgpdelpbcmbmeomcjbeemfm.crx?cms_redirect=yes&mip=87.255.216.85&mm=28&mn=sn-ug5on-unxe&ms=nvh&mt=1581166574&mv
+    Host: r2---sn-ug5on-unxe.gvt1.com\r\n
+    Connection: keep-alive\r\n
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Accept-Language: en-US,en;q=0.9,ru;q=0.8\r\n
+    \r\n
+    [Full request URI [truncated]: http://r2---sn-ug5on-unxe.gvt1.com/edgedl/chromewebstore/L2Nocm9tZV9leHRlbnNpb24vYmxvYnMvMjk4QUFXWHV4aEtlX19peUJMaUFXd3dUZw/8019.1111.0.0_pkedcjkdefgpdelpbcmbmeomcjbeemfm.crx?cms_redirect=yes&mip=87.255.216.8]
+    [HTTP request 1/1]
+
+No.     Time               Source                Destination           Protocol Length Info
+   1825 18:57:46.627444    10.101.6.200          128.119.245.12        HTTP     665    GET /wireshark-labs/HTTP-wireshark-file2.html HTTP/1.1 
+
+Frame 1825: 665 bytes on wire (5320 bits), 665 bytes captured (5320 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 128.119.245.12
+Transmission Control Protocol, Src Port: 58410, Dst Port: 80, Seq: 1, Ack: 1, Len: 599
+Hypertext Transfer Protocol
+    GET /wireshark-labs/HTTP-wireshark-file2.html HTTP/1.1\r\n
+    Host: gaia.cs.umass.edu\r\n
+    Connection: keep-alive\r\n
+    Cache-Control: max-age=0\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Accept-Language: en-US,en;q=0.9,ru;q=0.8\r\n
+    dnt: 1\r\n
+    If-None-Match: "173-59e0b0a93bc99"\r\n
+    If-Modified-Since: Sat, 08 Feb 2020 06:59:02 GMT\r\n
+    \r\n
+    [Full request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html]
+    [HTTP request 1/1]
+    [Response in frame: 1827]
+
+No.     Time               Source                Destination           Protocol Length Info
+   1827 18:57:46.795515    128.119.245.12        10.101.6.200          HTTP     306    HTTP/1.1 304 Not Modified 
+
+Frame 1827: 306 bytes on wire (2448 bits), 306 bytes captured (2448 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58410, Seq: 1, Ack: 600, Len: 240
+Hypertext Transfer Protocol
+    HTTP/1.1 304 Not Modified\r\n
+    Date: Sat, 08 Feb 2020 12:57:46 GMT\r\n
+    Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/5.4.16 mod_perl/2.0.11 Perl/v5.16.3\r\n
+    Connection: Keep-Alive\r\n
+    Keep-Alive: timeout=5, max=100\r\n
+    ETag: "173-59e0b0a93bc99"\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.168071000 seconds]
+    [Request in frame: 1825]
+    [Request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file2.html]

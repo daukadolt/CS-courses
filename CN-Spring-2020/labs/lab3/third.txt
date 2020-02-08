@@ -1,0 +1,545 @@
+No.     Time               Source                Destination           Protocol Length Info
+      1 19:56:11.940555    10.101.6.200          128.119.245.12        TCP      78     58595 → 80 [SYN] Seq=0 Win=65535 Len=0 MSS=1460 WS=64 TSval=854871651 TSecr=0 SACK_PERM=1
+
+Frame 1: 78 bytes on wire (624 bits), 78 bytes captured (624 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 128.119.245.12
+Transmission Control Protocol, Src Port: 58595, Dst Port: 80, Seq: 0, Len: 0
+    Source Port: 58595
+    Destination Port: 80
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 0    (relative sequence number)
+    Sequence number (raw): 2624598254
+    [Next sequence number: 1    (relative sequence number)]
+    Acknowledgment number: 0
+    Acknowledgment number (raw): 0
+    1011 .... = Header Length: 44 bytes (11)
+    Flags: 0x002 (SYN)
+    Window size value: 65535
+    [Calculated window size: 65535]
+    Checksum: 0x7c61 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (24 bytes), Maximum segment size, No-Operation (NOP), Window scale, No-Operation (NOP), No-Operation (NOP), Timestamps, SACK permitted, End of Option List (EOL)
+    [Timestamps]
+
+No.     Time               Source                Destination           Protocol Length Info
+      2 19:56:12.109926    128.119.245.12        10.101.6.200          TCP      74     80 → 58595 [SYN, ACK] Seq=0 Ack=1 Win=28960 Len=0 MSS=1460 SACK_PERM=1 TSval=862665680 TSecr=854871651 WS=128
+
+Frame 2: 74 bytes on wire (592 bits), 74 bytes captured (592 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58595, Seq: 0, Ack: 1, Len: 0
+    Source Port: 80
+    Destination Port: 58595
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 0    (relative sequence number)
+    Sequence number (raw): 2550019281
+    [Next sequence number: 1    (relative sequence number)]
+    Acknowledgment number: 1    (relative ack number)
+    Acknowledgment number (raw): 2624598255
+    1010 .... = Header Length: 40 bytes (10)
+    Flags: 0x012 (SYN, ACK)
+    Window size value: 28960
+    [Calculated window size: 28960]
+    Checksum: 0xe028 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (20 bytes), Maximum segment size, SACK permitted, Timestamps, No-Operation (NOP), Window scale
+    [SEQ/ACK analysis]
+    [Timestamps]
+
+No.     Time               Source                Destination           Protocol Length Info
+      3 19:56:12.110025    10.101.6.200          128.119.245.12        TCP      66     58595 → 80 [ACK] Seq=1 Ack=1 Win=131712 Len=0 TSval=854871820 TSecr=862665680
+
+Frame 3: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 128.119.245.12
+Transmission Control Protocol, Src Port: 58595, Dst Port: 80, Seq: 1, Ack: 1, Len: 0
+    Source Port: 58595
+    Destination Port: 80
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 1    (relative sequence number)
+    Sequence number (raw): 2624598255
+    [Next sequence number: 1    (relative sequence number)]
+    Acknowledgment number: 1    (relative ack number)
+    Acknowledgment number (raw): 2550019282
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x010 (ACK)
+    Window size value: 2058
+    [Calculated window size: 131712]
+    [Window size scaling factor: 64]
+    Checksum: 0x7762 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+    [SEQ/ACK analysis]
+    [Timestamps]
+
+No.     Time               Source                Destination           Protocol Length Info
+      4 19:56:12.110922    10.101.6.200          128.119.245.12        HTTP     553    GET /wireshark-labs/HTTP-wireshark-file3.html HTTP/1.1 
+
+Frame 4: 553 bytes on wire (4424 bits), 553 bytes captured (4424 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 128.119.245.12
+Transmission Control Protocol, Src Port: 58595, Dst Port: 80, Seq: 1, Ack: 1, Len: 487
+    Source Port: 58595
+    Destination Port: 80
+    [Stream index: 0]
+    [TCP Segment Len: 487]
+    Sequence number: 1    (relative sequence number)
+    Sequence number (raw): 2624598255
+    [Next sequence number: 488    (relative sequence number)]
+    Acknowledgment number: 1    (relative ack number)
+    Acknowledgment number (raw): 2550019282
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window size value: 2058
+    [Calculated window size: 131712]
+    [Window size scaling factor: 64]
+    Checksum: 0x9591 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+    [SEQ/ACK analysis]
+    [Timestamps]
+    TCP payload (487 bytes)
+Hypertext Transfer Protocol
+    GET /wireshark-labs/HTTP-wireshark-file3.html HTTP/1.1\r\n
+    Host: gaia.cs.umass.edu\r\n
+    Connection: keep-alive\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Accept-Language: en-US,en;q=0.9,ru;q=0.8\r\n
+    dnt: 1\r\n
+    \r\n
+    [Full request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file3.html]
+    [HTTP request 1/1]
+    [Response in frame: 11]
+
+No.     Time               Source                Destination           Protocol Length Info
+      5 19:56:12.227491    10.101.6.200          64.233.164.147        UDP      106    50198 → 443 Len=64
+
+Frame 5: 106 bytes on wire (848 bits), 106 bytes captured (848 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 64.233.164.147
+User Datagram Protocol, Src Port: 50198, Dst Port: 443
+Data (64 bytes)
+
+0000  c3 51 30 34 36 50 af 51 7c 20 6d a8 3b 4b 00 00   .Q046P.Q| m.;K..
+0010  00 06 dc c0 34 51 1c 18 8d d3 a1 9c 60 78 02 00   ....4Q......`x..
+0020  00 00 19 00 1b 4e 6f 20 72 65 63 65 6e 74 20 6e   .....No recent n
+0030  65 74 77 6f 72 6b 20 61 63 74 69 76 69 74 79 2e   etwork activity.
+    Data: c35130343650af517c206da83b4b00000006dcc034511c18…
+    [Length: 64]
+
+No.     Time               Source                Destination           Protocol Length Info
+      6 19:56:12.290453    128.119.245.12        10.101.6.200          TCP      66     80 → 58595 [ACK] Seq=1 Ack=488 Win=30080 Len=0 TSval=862665853 TSecr=854871820
+
+Frame 6: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58595, Seq: 1, Ack: 488, Len: 0
+    Source Port: 80
+    Destination Port: 58595
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 1    (relative sequence number)
+    Sequence number (raw): 2550019282
+    [Next sequence number: 1    (relative sequence number)]
+    Acknowledgment number: 488    (relative ack number)
+    Acknowledgment number (raw): 2624598742
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x010 (ACK)
+    Window size value: 235
+    [Calculated window size: 30080]
+    [Window size scaling factor: 128]
+    Checksum: 0x7bed [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+    [SEQ/ACK analysis]
+    [Timestamps]
+
+No.     Time               Source                Destination           Protocol Length Info
+      7 19:56:12.297343    128.119.245.12        10.101.6.200          TCP      1514   80 → 58595 [ACK] Seq=1 Ack=488 Win=30080 Len=1448 TSval=862665859 TSecr=854871820 [TCP segment of a reassembled PDU]
+
+Frame 7: 1514 bytes on wire (12112 bits), 1514 bytes captured (12112 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58595, Seq: 1, Ack: 488, Len: 1448
+    Source Port: 80
+    Destination Port: 58595
+    [Stream index: 0]
+    [TCP Segment Len: 1448]
+    Sequence number: 1    (relative sequence number)
+    Sequence number (raw): 2550019282
+    [Next sequence number: 1449    (relative sequence number)]
+    Acknowledgment number: 488    (relative ack number)
+    Acknowledgment number (raw): 2624598742
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x010 (ACK)
+    Window size value: 235
+    [Calculated window size: 30080]
+    [Window size scaling factor: 128]
+    Checksum: 0x384d [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+    [SEQ/ACK analysis]
+    [Timestamps]
+    TCP payload (1448 bytes)
+    [Reassembled PDU in frame: 11]
+    TCP segment data (1448 bytes)
+
+No.     Time               Source                Destination           Protocol Length Info
+      8 19:56:12.297723    128.119.245.12        10.101.6.200          TCP      1514   80 → 58595 [ACK] Seq=1449 Ack=488 Win=30080 Len=1448 TSval=862665859 TSecr=854871820 [TCP segment of a reassembled PDU]
+
+Frame 8: 1514 bytes on wire (12112 bits), 1514 bytes captured (12112 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58595, Seq: 1449, Ack: 488, Len: 1448
+    Source Port: 80
+    Destination Port: 58595
+    [Stream index: 0]
+    [TCP Segment Len: 1448]
+    Sequence number: 1449    (relative sequence number)
+    Sequence number (raw): 2550020730
+    [Next sequence number: 2897    (relative sequence number)]
+    Acknowledgment number: 488    (relative ack number)
+    Acknowledgment number (raw): 2624598742
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x010 (ACK)
+    Window size value: 235
+    [Calculated window size: 30080]
+    [Window size scaling factor: 128]
+    Checksum: 0xe5c1 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+    [SEQ/ACK analysis]
+    [Timestamps]
+    TCP payload (1448 bytes)
+    [Reassembled PDU in frame: 11]
+    TCP segment data (1448 bytes)
+
+No.     Time               Source                Destination           Protocol Length Info
+      9 19:56:12.297782    10.101.6.200          128.119.245.12        TCP      66     58595 → 80 [ACK] Seq=488 Ack=2897 Win=129600 Len=0 TSval=854872005 TSecr=862665859
+
+Frame 9: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 128.119.245.12
+Transmission Control Protocol, Src Port: 58595, Dst Port: 80, Seq: 488, Ack: 2897, Len: 0
+    Source Port: 58595
+    Destination Port: 80
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 488    (relative sequence number)
+    Sequence number (raw): 2624598742
+    [Next sequence number: 488    (relative sequence number)]
+    Acknowledgment number: 2897    (relative ack number)
+    Acknowledgment number (raw): 2550022178
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x010 (ACK)
+    Window size value: 2025
+    [Calculated window size: 129600]
+    [Window size scaling factor: 64]
+    Checksum: 0x68e0 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+    [SEQ/ACK analysis]
+    [Timestamps]
+
+No.     Time               Source                Destination           Protocol Length Info
+     10 19:56:12.298254    128.119.245.12        10.101.6.200          TCP      1514   80 → 58595 [ACK] Seq=2897 Ack=488 Win=30080 Len=1448 TSval=862665859 TSecr=854871820 [TCP segment of a reassembled PDU]
+
+Frame 10: 1514 bytes on wire (12112 bits), 1514 bytes captured (12112 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58595, Seq: 2897, Ack: 488, Len: 1448
+    Source Port: 80
+    Destination Port: 58595
+    [Stream index: 0]
+    [TCP Segment Len: 1448]
+    Sequence number: 2897    (relative sequence number)
+    Sequence number (raw): 2550022178
+    [Next sequence number: 4345    (relative sequence number)]
+    Acknowledgment number: 488    (relative ack number)
+    Acknowledgment number (raw): 2624598742
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x010 (ACK)
+    Window size value: 235
+    [Calculated window size: 30080]
+    [Window size scaling factor: 128]
+    Checksum: 0xc837 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+    [SEQ/ACK analysis]
+    [Timestamps]
+    TCP payload (1448 bytes)
+    [Reassembled PDU in frame: 11]
+    TCP segment data (1448 bytes)
+
+No.     Time               Source                Destination           Protocol Length Info
+     11 19:56:12.298528    128.119.245.12        10.101.6.200          HTTP     583    HTTP/1.1 200 OK  (text/html)
+
+Frame 11: 583 bytes on wire (4664 bits), 583 bytes captured (4664 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 128.119.245.12, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 80, Dst Port: 58595, Seq: 4345, Ack: 488, Len: 517
+    Source Port: 80
+    Destination Port: 58595
+    [Stream index: 0]
+    [TCP Segment Len: 517]
+    Sequence number: 4345    (relative sequence number)
+    Sequence number (raw): 2550023626
+    [Next sequence number: 4862    (relative sequence number)]
+    Acknowledgment number: 488    (relative ack number)
+    Acknowledgment number (raw): 2624598742
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window size value: 235
+    [Calculated window size: 30080]
+    [Window size scaling factor: 128]
+    Checksum: 0x2289 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+    [SEQ/ACK analysis]
+    [Timestamps]
+    TCP payload (517 bytes)
+    TCP segment data (517 bytes)
+[4 Reassembled TCP Segments (4861 bytes): #7(1448), #8(1448), #10(1448), #11(517)]
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+    Date: Sat, 08 Feb 2020 13:56:12 GMT\r\n
+    Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/5.4.16 mod_perl/2.0.11 Perl/v5.16.3\r\n
+    Last-Modified: Sat, 08 Feb 2020 06:59:02 GMT\r\n
+    ETag: "1194-59e0b0a936e78"\r\n
+    Accept-Ranges: bytes\r\n
+    Content-Length: 4500\r\n
+    Keep-Alive: timeout=5, max=100\r\n
+    Connection: Keep-Alive\r\n
+    Content-Type: text/html; charset=UTF-8\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.187606000 seconds]
+    [Request in frame: 4]
+    [Request URI: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file3.html]
+    File Data: 4500 bytes
+Line-based text data: text/html (98 lines)
+    <html><head> \n
+    <title>Historical Documents:THE BILL OF RIGHTS</title></head>\n
+    \n
+    \n
+    <body bgcolor="#ffffff" link="#330000" vlink="#666633">\n
+    <p><br>\n
+    </p>\n
+    <p></p><center><b>THE BILL OF RIGHTS</b><br>\n
+      <em>Amendments 1-10 of the Constitution</em>\n
+    </center>\n
+    \n
+    <p>The Conventions of a number of the States having, at the time of adopting\n
+    the Constitution, expressed a desire, in order to prevent misconstruction\n
+    or abuse of its powers, that further declaratory and restrictive clauses\n
+    should be added, and as extending the ground of public confidence in the\n
+    Government will best insure the beneficent ends of its institution; </p><p>  Resolved, by the Senate and House of Representatives of the United\n
+    States of America, in Congress assembled, two-thirds of both Houses concurring,\n
+    that the following articles be proposed to the Legislatures of the several\n
+    States, as amendments to the Constitution of the United States; all or any\n
+    of which articles, when ratified by three-fourths of the said Legislatures,\n
+    to be valid to all intents and purposes as part of the said Constitution,\n
+    namely:    </p><p><a name="1"><strong><h3>Amendment I</h3></strong></a>\n
+    \n
+    <p></p><p>Congress shall make no law respecting an establishment of\n
+    religion, or prohibiting the free exercise thereof; or\n
+    abridging the freedom of speech, or of the press; or the\n
+    right of the people peaceably to assemble, and to petition\n
+    the government for a redress of grievances.\n
+    \n
+    </p><p><a name="2"><strong><h3>Amendment II</h3></strong></a>\n
+    \n
+    <p></p><p>A well regulated militia, being necessary to the security\n
+    of a free state, the right of the people to keep and bear\n
+    arms, shall not be infringed.\n
+    \n
+    </p><p><a name="3"><strong><h3>Amendment III</h3></strong></a>\n
+    \n
+    <p></p><p>No soldier shall, in time of peace be quartered in any house,\n
+    without the consent of the owner, nor in time of war, but\n
+    in a manner to be prescribed by law.\n
+    \n
+    </p><p><a name="4"><strong><h3>Amendment IV</h3></strong></a>\n
+    \n
+    <p></p><p>The right of the people to be secure in their persons, houses,\n
+    papers, and effects, against unreasonable searches and seizures,\n
+    shall not be violated, and no warrants shall issue, but upon\n
+    probable cause, supported by oath or affirmation, and\n
+    particularly describing the place to be searched, and the\n
+    persons or things to be seized.\n
+    \n
+    </p><p><a name="5"><strong><h3>Amendment V</h3></strong></a>\n
+    \n
+    <p></p><p>No person shall be held to answer for a capital, or otherwise\n
+    infamous crime, unless on a presentment or indictment of a grand\n
+    jury, except in cases arising in the land or naval forces,\n
+    or in the militia, when in actual service in time of war\n
+    or public danger; nor shall any person be subject for the\n
+    same offense to be twice put in jeopardy of life or limb;\n
+    nor shall be compelled in any criminal case to be a witness\n
+    against himself, nor be deprived of life, liberty, or property,\n
+    without due process of law; nor shall private property be\n
+    taken for public use, without just compensation.\n
+    \n
+    </p><p><a name="6"><strong><h3>Amendment VI</h3></strong></a>\n
+    \n
+    <p></p><p>In all criminal prosecutions, the accused shall enjoy the right\n
+    to a speedy and public trial, by an impartial jury of the state\n
+    and district wherein the crime shall have been committed, which\n
+    district shall have been previously ascertained by law, and\n
+    to be informed of the nature and cause of the accusation;\n
+    to be confronted with the witnesses against him; to have\n
+    compulsory process for obtaining witnesses in his favor,\n
+    and to have the assistance of counsel for his defense.\n
+    \n
+    </p><p><a name="7"><strong><h3>Amendment VII</h3></strong></a>\n
+    \n
+    <p></p><p>In suits at common law, where the value in controversy shall\n
+    exceed twenty dollars, the right of trial by jury shall be\n
+    preserved, and no fact tried by a jury, shall be otherwise\n
+    reexamined in any court of the United States, than according\n
+    to the rules of the common law.\n
+    \n
+    </p><p><a name="8"><strong><h3>Amendment VIII</h3></strong></a>\n
+    \n
+    <p></p><p>Excessive bail shall not be required, nor excessive fines\n
+    imposed, nor cruel and unusual punishments inflicted.\n
+    \n
+    </p><p><a name="9"><strong><h3>Amendment IX</h3></strong></a>\n
+    \n
+    <p></p><p>The enumeration in the Constitution, of certain rights, shall\n
+    not be construed to deny or disparage others retained by the people.\n
+    \n
+    </p><p><a name="10"><strong><h3>Amendment X</h3></strong></a>\n
+    \n
+    <p></p>\n
+    <p>The powers not delegated to the United States by the Constitution, nor prohibited \n
+      by it to the states, are reserved to the states respectively, or to the people.</p>\n
+    </body></html>
+
+No.     Time               Source                Destination           Protocol Length Info
+     12 19:56:12.298606    10.101.6.200          128.119.245.12        TCP      66     58595 → 80 [ACK] Seq=488 Ack=4862 Win=127616 Len=0 TSval=854872006 TSecr=862665859
+
+Frame 12: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 128.119.245.12
+Transmission Control Protocol, Src Port: 58595, Dst Port: 80, Seq: 488, Ack: 4862, Len: 0
+    Source Port: 58595
+    Destination Port: 80
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 488    (relative sequence number)
+    Sequence number (raw): 2624598742
+    [Next sequence number: 488    (relative sequence number)]
+    Acknowledgment number: 4862    (relative ack number)
+    Acknowledgment number (raw): 2550024143
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x010 (ACK)
+    Window size value: 1994
+    [Calculated window size: 127616]
+    [Window size scaling factor: 64]
+    Checksum: 0x6151 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+    [SEQ/ACK analysis]
+    [Timestamps]
+
+No.     Time               Source                Destination           Protocol Length Info
+     13 19:56:12.301126    10.101.6.200          128.119.245.12        TCP      66     [TCP Window Update] 58595 → 80 [ACK] Seq=488 Ack=4862 Win=131072 Len=0 TSval=854872008 TSecr=862665859
+
+Frame 13: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 128.119.245.12
+Transmission Control Protocol, Src Port: 58595, Dst Port: 80, Seq: 488, Ack: 4862, Len: 0
+    Source Port: 58595
+    Destination Port: 80
+    [Stream index: 0]
+    [TCP Segment Len: 0]
+    Sequence number: 488    (relative sequence number)
+    Sequence number (raw): 2624598742
+    [Next sequence number: 488    (relative sequence number)]
+    Acknowledgment number: 4862    (relative ack number)
+    Acknowledgment number (raw): 2550024143
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x010 (ACK)
+    Window size value: 2048
+    [Calculated window size: 131072]
+    [Window size scaling factor: 64]
+    Checksum: 0x6119 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+    [SEQ/ACK analysis]
+    [Timestamps]
+
+No.     Time               Source                Destination           Protocol Length Info
+     14 19:56:13.203378    10.101.6.200          64.233.165.188        TCP      54     58550 → 443 [ACK] Seq=1 Ack=1 Win=2048 Len=0
+
+Frame 14: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface en0, id 0
+Ethernet II, Src: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b), Dst: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d)
+Internet Protocol Version 4, Src: 10.101.6.200, Dst: 64.233.165.188
+Transmission Control Protocol, Src Port: 58550, Dst Port: 443, Seq: 1, Ack: 1, Len: 0
+    Source Port: 58550
+    Destination Port: 443
+    [Stream index: 1]
+    [TCP Segment Len: 0]
+    Sequence number: 1    (relative sequence number)
+    Sequence number (raw): 1062780389
+    [Next sequence number: 1    (relative sequence number)]
+    Acknowledgment number: 1    (relative ack number)
+    Acknowledgment number (raw): 3223922608
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x010 (ACK)
+    Window size value: 2048
+    [Calculated window size: 2048]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0xe478 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    [Timestamps]
+
+No.     Time               Source                Destination           Protocol Length Info
+     15 19:56:13.263262    64.233.165.188        10.101.6.200          TCP      66     [TCP ACKed unseen segment] 443 → 58550 [ACK] Seq=1 Ack=2 Win=259 Len=0 TSval=1749150278 TSecr=854465974
+
+Frame 15: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface en0, id 0
+Ethernet II, Src: HewlettP_b8:1e:9d (44:31:92:b8:1e:9d), Dst: Apple_ca:bf:0b (f4:5c:89:ca:bf:0b)
+Internet Protocol Version 4, Src: 64.233.165.188, Dst: 10.101.6.200
+Transmission Control Protocol, Src Port: 443, Dst Port: 58550, Seq: 1, Ack: 2, Len: 0
+    Source Port: 443
+    Destination Port: 58550
+    [Stream index: 1]
+    [TCP Segment Len: 0]
+    Sequence number: 1    (relative sequence number)
+    Sequence number (raw): 3223922608
+    [Next sequence number: 1    (relative sequence number)]
+    Acknowledgment number: 2    (relative ack number)
+    Acknowledgment number (raw): 1062780390
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x010 (ACK)
+    Window size value: 259
+    [Calculated window size: 259]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x0f31 [unverified]
+    [Checksum Status: Unverified]
+    Urgent pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+    [SEQ/ACK analysis]
+    [Timestamps]
