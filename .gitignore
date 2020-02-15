@@ -236,3 +236,4 @@ fabric.properties
 
 # A folder name to ignore where I'll be putting extra zip files and other stuff not needed on github
 toignore
+.vscode
