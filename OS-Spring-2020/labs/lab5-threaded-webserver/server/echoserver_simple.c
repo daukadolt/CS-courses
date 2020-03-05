@@ -7,55 +7,26 @@
 #include <sys/socket.h>
 #include <sys/time.h>
 #include <netinet/in.h>
+#include <pthread.h>
+#include <semaphore.h>
 
 #define	QLEN			5
 #define	BUFSIZE			4096
+#define THREADNUM       100
 
 int passivesock( char *service, char *protocol, int qlen, int *rport );
 
-/*
-**	This poor server ... only serves one client at a time
-*/
-int
-main( int argc, char *argv[] )
-{
-	char			buf[BUFSIZE];
-	char			*service;
-	struct sockaddr_in	fsin;
+pthread_t threads[THREADNUM];
+sem_t full;
+
+void threadFunction(int msock, struct sockaddr_in *fsin) {
 	socklen_t		alen;
-	int			msock;
-	int			ssock;
-	int			rport = 0;
 	int			cc;
-	
-	switch (argc) 
-	{
-		case	1:
-			// No args? let the OS choose a port and tell the user
-			rport = 1;
-			break;
-		case	2:
-			// User provides a port? then use it
-			service = argv[1];
-			break;
-		default:
-			fprintf( stderr, "usage: server [port]\n" );
-			exit(-1);
-	}
-
-	msock = passivesock( service, "tcp", QLEN, &rport );
-	if (rport)
-	{
-		//	Tell the user the selected port
-		printf( "server: port %d\n", rport );	
-		fflush( stdout );
-	}
-
-	
+	char			buf[BUFSIZE];
 	for (;;)
 	{
 		int	ssock;
-
+        sem_wait(&full);
 		alen = sizeof(fsin);
 		ssock = accept( msock, (struct sockaddr *)&fsin, &alen );
 		if (ssock < 0)
@@ -90,6 +61,58 @@ main( int argc, char *argv[] )
 			}
 		}
 	}
+}
+
+void initThreads() {
+    sem_init(&full, 0, 0);
+    for(int i = 0; i<THREADNUM; i++) {
+        pthread_create(&threads[i], NULL, threadFunction, NULL);
+    }
+}
+
+void awaitThreads() {
+    for(int i = 0; i<THREADNUM; i++) {
+        pthread_join(threads[i], NULL);
+    }
+}
+
+/*
+**	This poor server ... only serves one client at a time
+*/
+int
+main( int argc, char *argv[] )
+{
+	char			*service;
+	struct sockaddr_in	fsin;
+	int			msock;
+	int			rport = 0;
+	
+	switch (argc) 
+	{
+		case	1:
+			// No args? let the OS choose a port and tell the user
+			rport = 1;
+			break;
+		case	2:
+			// User provides a port? then use it
+			service = argv[1];
+			break;
+		default:
+			fprintf( stderr, "usage: server [port]\n" );
+			exit(-1);
+	}
+
+	msock = passivesock( service, "tcp", QLEN, &rport );
+	if (rport)
+	{
+		//	Tell the user the selected port
+		printf( "server: port %d\n", rport );	
+		fflush( stdout );
+	}
+
+    initThreads();
+    awaitThreads();
+	
 }
 
 
