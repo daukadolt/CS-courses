@@ -1,0 +1,16 @@
+1.	What are the processor and memory specifications of the machine you are running your program on?
+    Answer: My laptop processor is "2.7 GHz Dual-Core Intel Core i5", 8 GB RAM, 128 GB SSD Mac Pro 2015.
+2.	List the real time in microseconds that your program took with the following inputs (on the second try):
+	a. mm 10 20 2 4 takes 7 microseconds sequentially, 407 concurrently
+	b. mm 50 70 2 4 takes 533 microseconds sequentially, 1490 concurrently
+	c. mm 100 200 2 4 takes 6891 microseconds sequentially, 6781 concurrently
+	d. mm 500 700 2 4 takes 901309 microseconds sequentially, 584202 concurrently
+	e. mm 900 1000 2 4 takes 12825840 microseconds sequentially, 7091281 concurrently
+	f. mm 1023 1023 2 4 takes 21481764 microseconds sequentially, 10940968 concurrently
+3.	What is the pattern you see in the time difference between the sequential and parallel implementations, and how do you explain your results?
+	Answer: 
+	a) Pattern is that the larger the matrices, the larger the divide in execution time between sequential and concurrent approaches. Sequential approach is faster at small matrices, but as the size of matrices grow, concurrent approach wins out.
+	b) Explanation is simple - concurrent approach is simply faster since computer does non-overlapping computations in parallel, which is faster than doing them all in a sequence.
+4.	Did your threaded solution require any synchronization mechanisms?  Explain why or why not.
+	Answer: If "synchronization mechanisms" means mutexes and semaphores, then no, it does not. Using those in matrix multiplication problem may be helpful in showing the "absolute" value for the time that it takes for multithreaded approach to finish the task. However, that is slower than letting threads start as soon as possible one by one.
+	On the other hand, if "synchronization mechanisms" means something like thread_join, then yes, it is absolutely necessary, since if it is not used, process may finish earlier than the threads finish multiplication.
