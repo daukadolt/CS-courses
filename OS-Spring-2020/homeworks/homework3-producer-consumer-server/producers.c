@@ -36,6 +36,13 @@ ITEM *generateItem() {
 	return newItem;
 }
 
+void writeToSocket(int socketFD, void *buffer, int length) {
+	if(write(socketFD, buffer, length) <= 0) {
+		close(socketFD);
+		exit(-1);
+	}
+}
+
 int
 main( int argc, char *argv[] )
 {
@@ -88,6 +95,10 @@ main( int argc, char *argv[] )
 	buf[cc] = '\0';
 	if(strcmp(buf, "GO\r\n") == 0) {
 		printf("GO received\n");
+		int someNum = 100;
+		int reordered = htonl(someNum);
+		writeToSocket(csock, &reordered, 4);
+		printf("sizeof someNum %d\n", reordered);
 	}
 	else {
 		printf("not go\n");

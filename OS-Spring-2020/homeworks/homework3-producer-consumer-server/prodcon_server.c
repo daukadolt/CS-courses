@@ -19,7 +19,7 @@ pthread_mutex_t getThreadNum;
 int threadNum = 0;
 
 
-void writeToSocket(int socketFD, char *buffer, int length) {
+void writeToSocket(int socketFD, void *buffer, int length) {
 	if(write(socketFD, buffer, length) <= 0) {
 		close(socketFD);
 		exit(-1);
@@ -103,6 +103,22 @@ main( int argc, char *argv[] )
 				printf( "The client says: %s\n", buf );
 				if(strcmp(buf, "PRODUCE\r\n") == 0) {
 					writeToSocket(ssock, "GO\r\n", 4);
+					if ( (cc = read( ssock, buf, BUFSIZE )) <= 0 )
+					{
+						printf( "The client has gone.\n" );
+						close(ssock);
+						break;
+					}
+					buf[cc] = '\0';
+					int numberRead = atoi(buf);
+					int number = ntohl(numberRead);
+					if ( (cc = read( ssock, buf, BUFSIZE )) <= 0 )
+					{
+						printf( "The client has gone.\n" );
+						close(ssock);
+						break;
+					}
+					printf("read %d\n", numberRead);
 				} else if(strcmp(buf, "CONSUME\r\n") == 0) {
 					printf("consume command\n");
 				} else {
