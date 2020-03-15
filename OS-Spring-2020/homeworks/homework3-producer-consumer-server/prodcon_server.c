@@ -26,10 +26,73 @@ void writeToSocket(int socketFD, void *buffer, int length) {
 	}
 }
 
+void serveProducer(void *socketFDNotPointer) {
+	char			buf[BUFSIZE];
+	int				cc;
+	int				ssock = (int) socketFDNotPointer;
+	writeToSocket(ssock, "GO\r\n", 4);
+	int charNum;
+	if ( (cc = read( ssock, &charNum, 4 )) <= 0 )
+	{
+		printf( "The client has gone.\n" );
+		close(ssock);
+	}
+	charNum = ntohl(charNum);
+	printf("number of chars - %d\n", charNum);
+
+	ITEM *newItem = (ITEM *) malloc(sizeof(ITEM));
+	newItem->size = charNum;
+	newItem->letters = (char *) malloc(sizeof(char)*charNum);
+
+	if ( (cc = read( ssock, newItem->letters, newItem->size )) <= 0 )
+	{
+		printf( "an error when reading letters.\n" );
+		close(ssock);
+		exit(-1);
+	}
+
+	printf("read string - %s\n", newItem->letters);
+	
+
+	writeToSocket(ssock, "DONE\r\n", 6);
+	if ( (cc = read( ssock, buf, BUFSIZE )) <= 0 )
+	{
+		printf( "The client has gone.\n" );
+		close(ssock);
+	}
+}
+
+void serveConsumer(void *socketFDNotPointer) {
+
+}
+
+void serveRequest(void *socketFDNotPointer) {
+	char		buf[100];
+	int 		ssock = (int) socketFDNotPointer;
+	int 		cc;
+	if ( (cc = read( ssock, buf, BUFSIZE )) <= 0 )
+			{
+				printf( "The client has gone.\n" );
+				close(ssock);
+			}
+			else
+			{
+				buf[cc] = '\0';
+				printf( "The client says: %s\n", buf );
+				if(strcmp(buf, "PRODUCE\r\n") == 0) {
+					serveProducer(socketFDNotPointer);
+				} else if(strcmp(buf, "CONSUME\r\n") == 0) {
+					serveConsumer(socketFDNotPointer);
+				} else {
+					printf("closing connection\n");
+					close(ssock);
+				}
+			}
+}
+
 int
 main( int argc, char *argv[] )
 {
-	char			buf[BUFSIZE];
 	char			*service;
 	struct sockaddr_in	fsin;
 	socklen_t		alen;
@@ -88,52 +151,9 @@ main( int argc, char *argv[] )
 		else threadNum++;
 		pthread_mutex_unlock(&getThreadNum);
 
-		for (;;)
-		{
-			if ( (cc = read( ssock, buf, BUFSIZE )) <= 0 )
-			{
-				printf( "The client has gone.\n" );
-				close(ssock);
-				break;
-			}
-			else
-			{
-				printf("here?\n");
-				buf[cc] = '\0';
-				printf( "The client says: %s\n", buf );
-				if(strcmp(buf, "PRODUCE\r\n") == 0) {
-					writeToSocket(ssock, "GO\r\n", 4);
-					if ( (cc = read( ssock, buf, BUFSIZE )) <= 0 )
-					{
-						printf( "The client has gone.\n" );
-						close(ssock);
-						break;
-					}
-					buf[cc] = '\0';
-					int numberRead = atoi(buf);
-					int number = ntohl(numberRead);
-					if ( (cc = read( ssock, buf, BUFSIZE )) <= 0 )
-					{
-						printf( "The client has gone.\n" );
-						close(ssock);
-						break;
-					}
-					printf("read %d\n", numberRead);
-				} else if(strcmp(buf, "CONSUME\r\n") == 0) {
-					printf("consume command\n");
-				} else {
-					printf("closing connection\n");
-					close(ssock);
-				}
-				// if ( write( ssock, buf, cc ) < 0 )
-				// {
-				// 	/* This guy is dead */
-				// 	printf("connection closed\n");
-				// 	close( ssock );
-				// 	break;
-				// }
-			}
-		}
+
+		pthread_t thr;
+		pthread_create(&thr, NULL, serveRequest, (void *) ssock);
 	}
 }
 

@@ -16,7 +16,7 @@
 
 static char *rand_string(char *str, size_t size)
 {
-    const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJK...";
+    const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     if (size) {
         --size;
         for (size_t n = 0; n < size; n++) {
@@ -95,10 +95,18 @@ main( int argc, char *argv[] )
 	buf[cc] = '\0';
 	if(strcmp(buf, "GO\r\n") == 0) {
 		printf("GO received\n");
-		int someNum = 100;
-		int reordered = htonl(someNum);
+		int reordered = htonl(item->size);
 		writeToSocket(csock, &reordered, 4);
-		printf("sizeof someNum %d\n", reordered);
+		writeToSocket(csock, item->letters, item->size-1);
+		if( (cc = read(csock, buf, BUFSIZE)) <= 0) {
+			fprintf( stderr, "client write: %s\n", strerror(errno) );
+			exit( -1 );	
+		}
+		buf[cc] = '\0';
+		if(strcmp(buf, "DONE\r\n") == 0) {
+			printf("Dobby is free!\n");
+			close(csock);
+		}
 	}
 	else {
 		printf("not go\n");
